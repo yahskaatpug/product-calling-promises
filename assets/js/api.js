@@ -1,9 +1,17 @@
 export const categoryData = async (url) => {
-    const category = await fetch(url);
-    return category;
+    try {
+        const category = await fetch(url);
+        return category;
+    } catch (err) {
+
+    }
 }
 
 export const productData = async (url) => {
-    const product = await fetch(url);
-    return product;
+    try {
+        const product = await fetch(url);
+        return product;
+    } catch (err) {
+
+    }
 }
