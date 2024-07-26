@@ -2,6 +2,7 @@ import { categoryData, productData } from "./api";
 
 
 const productService = async()=>{
+    try{
     let products;
     let categories = await categoryData("https://fakestoreapi.com/products/categories");
     categories = await categories?.json();
@@ -14,6 +15,9 @@ const productService = async()=>{
          return {products,categories}
     }
     return categories;
+    }catch(error){
+        console.log("err:",error)
+    }
 }
 
 console.log(productService());
