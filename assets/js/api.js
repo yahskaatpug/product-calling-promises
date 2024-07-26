@@ -1,9 +1,9 @@
-export const categoryData = async(url)=>{
+export const categoryData = async (url) => {
     const category = await fetch(url);
     return category;
 }
 
-export const productData = async(url)=>{
+export const productData = async (url) => {
     const product = await fetch(url);
     return product;
 }
