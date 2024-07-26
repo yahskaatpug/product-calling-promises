@@ -1,4 +1,4 @@
-import { categoryData, productData } from "./assets/api";
+import { categoryData, productData } from "./api";
 
 
 const productService = async()=>{
