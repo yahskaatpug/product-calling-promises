@@ -1,7 +1,7 @@
 export const categoryData = async (url) => {
     try {
         const category = await fetch(url);
-        return category;
+        return category.json();
     } catch (err) {
 
     }
@@ -10,7 +10,7 @@ export const categoryData = async (url) => {
 export const productData = async (url) => {
     try {
         const product = await fetch(url);
-        return product;
+        return product.json();
     } catch (err) {
 
     }
