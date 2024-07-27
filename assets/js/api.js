@@ -1,5 +1,5 @@
 export const categoryData = async (url, timeOut) => {
-    const {controller, timeOutId} = apiTimeOut();
+    const {controller, timeOutId} = apiTimeOut(timeOut);
 
     try {
         const category = await fetch(url, {signal: controller.signal});
@@ -14,22 +14,19 @@ export const categoryData = async (url, timeOut) => {
 }
 
 export const productData = async (url) => {
-   const {controller, timeOutId} = apiTimeOut();
-   clearTimeout(timeOutId);
+  // const {controller, timeOutId} = apiTimeOut();
+  // clearTimeout(timeOutId);
     try {
-        const product = await fetch(url,  {signal: controller.signal});
-        return product.json();
+        const product = await axios.get(url);
+        return product;
     } catch (err) {
         console.log("error:", err);
-        if(error.name === 'AbortError') {
-            throw new Error('Request timed out');
-        }
     }
 }
 
-const apiTimeOut = ()=>{
+const apiTimeOut = (timeOut)=>{
     const controller = new AbortController();
     const abortController = ()=> controller.abort();
-    const timeOutId = setTimeout(()=> (abortController, 1000));
+    const timeOutId = setTimeout(()=> (abortController, timeOut));
     return {controller, timeOutId}
 }
